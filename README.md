@@ -20,8 +20,8 @@ Tüm Controller'larda
 işlemleri yapılabilmektedir.
 * Ayrıca Category ve Supplier için girilen Id'e göre ilgili Product'lar listelenebilmektedir.
 
-![Category](https://ibb.co/Ptvk25N)
+![Category](https://www.linkpicture.com/q/Category.png)
 
-![Product](https://ibb.co/Ptvk25N)
+![Product](https://www.linkpicture.com/q/Product.png)
 
-![Supplier](https://ibb.co/5TsJM11)
+![Supplier](https://www.linkpicture.com/q/Supplier.png)
