@@ -11,13 +11,16 @@ Katmanlı mimariye uygun olarak geliştirildiğinden istenilirse BLL katmanı do
 Burada araya bir katman eklemek daha uygun olacağından 'ServiceLayer' oluşturmak için API'ye aktarıldı.
 
 Tüm Controller'larda 
+
 * Get/All
 * Get/id
 * Create
 * Update
 * Delete
-* Search
+* Search 
+
 işlemleri yapılabilmektedir.
+
 * Ayrıca Category ve Supplier için girilen Id'e göre ilgili Product'lar listelenebilmektedir.
 
 ![Category](https://www.linkpicture.com/q/Category.png)
