@@ -1,9 +1,18 @@
-﻿namespace ProductApi.Models
+﻿using ProductApi.Core.Entity;
+using System.ComponentModel.DataAnnotations;
+
+namespace ProductApi.Models
 {
-    public class Category
+    public class Category : BaseEntity
     {
-        public int id { get; set; }
-        public string description { get; set; }
-        public string name { get; set; }
+        public Category()
+        {
+            Products = new HashSet<Product>();
+        }
+        [Required]
+        [MaxLength(100), MinLength(10)]
+        public string description { get; set; } = "Default description.";
+        public string? name { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

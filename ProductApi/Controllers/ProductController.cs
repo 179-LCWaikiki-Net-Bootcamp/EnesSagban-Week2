@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductApi.Models;
-using ProductApi.ProductRepo;
+using ProductApi.ViewModel;
+using ProductApi_BLL.Abstract;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,53 +10,44 @@ namespace ProductApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        ProductOperations productOperations;
-        public ProductController()
+        IProductBLL productService;
+
+        public ProductController(IProductBLL productService)
         {
-            productOperations = new ProductOperations();
+            this.productService = productService;
         }
+
         // GET: api/<ProductController>
         [HttpGet]
-        public List<Product> Get()
-        { 
-            productOperations.GetProducts();
-            return ProductOperations.productList;
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public ProductVM Get(int id)
         {
-            return ProductOperations.productList.Find(x => x.id == id);
+            
+            return productService.GetProductById(6);
         }
 
         // POST api/<ProductController>
         [HttpPost]
-        public void Post([FromBody] Product value)
+        public void Post([FromBody] string value)
         {
-            ProductOperations.productList.Add(value);
         }
 
         // PUT api/<ProductController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Product value)
+        public void Put(int id, [FromBody] string value)
         {
-            Product product = ProductOperations.productList.Find(x => x.id == id);
-            product.id = id;
-            product.unitPrice = value.unitPrice;
-            product.discontinued=value.discontinued;
-            product.quantityPerUnit = value.quantityPerUnit;
-            product.unitsOnOrder = value.unitsOnOrder;
-            product.discontinued= value.discontinued;
-            product.name = value.name;
-            product.unitsInStock = value.unitsInStock;
         }
 
         // DELETE api/<ProductController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            ProductOperations.productList.Remove(ProductOperations.productList.Find(x => x.id == id));
         }
     }
 }
